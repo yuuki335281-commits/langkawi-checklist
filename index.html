@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏝️ Langkawi Checklist</title>
+<style>
+body{font-family:-apple-system,sans-serif;margin:0;background:linear-gradient(#6fd3ff,#eefcff);padding:16px}
+.card{max-width:430px;margin:auto;background:#ffffffdd;border-radius:24px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+h1{margin:0}h2{margin:18px 0 8px;font-size:18px}
+label{display:flex;gap:10px;padding:10px 0;align-items:center}
+input{width:22px;height:22px}
+.bar{height:10px;background:#d9eef8;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:#00a3c4}
+button{width:100%;margin-top:18px;padding:12px;border:none;border-radius:14px;background:#0b84c6;color:#fff}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🏝️ Langkawi</h1>
+<p>土曜日チェックリスト ✈️</p>
 
+<div class="bar"><div class="fill" id="fill"></div></div>
+<p id="count">0 / 20 完了</p>
+
+<h2>📋 予約確認</h2>
+<label><input type="checkbox">飛行機（旅程・搭乗券）</label>
+<label><input type="checkbox">ホテル予約確認</label>
+<label><input type="checkbox">ダタイにメール</label>
+
+<h2>🧳 スーツケース</h2>
+<label><input type="checkbox">スキンケア</label>
+<label><input type="checkbox">サンダル</label>
+<label><input type="checkbox">服</label>
+
+<h2>🎒 手持ち</h2>
+<label><input type="checkbox">薬</label>
+<label><input type="checkbox">モバイルチャージャー</label>
+<label><input type="checkbox">ネックピロー</label>
+<label><input type="checkbox">耳栓</label>
+<label><input type="checkbox">アイマスク</label>
+<label><input type="checkbox">パスポート</label>
+
+<h2>🛍️ 土曜日絶対買うもの</h2>
+<label><input type="checkbox">変圧器確認</label>
+<label><input type="checkbox">緩衝材</label>
+<label><input type="checkbox">ビオフェルミン</label>
+<label><input type="checkbox">マスク</label>
+<label><input type="checkbox">⭐ eSIM</label>
+<label><input type="checkbox">スープ・お菓子</label>
+<label><input type="checkbox">パンツ（ゆうき）</label>
+<label><input type="checkbox">本</label>
+
+<button onclick="document.querySelectorAll('input').forEach(b=>b.checked=false);update()">リセット</button>
+</div>
+
+<script>
+const boxes=[...document.querySelectorAll('input')];
+function update(){
+ const done=boxes.filter(b=>b.checked).length;
+ document.getElementById('count').textContent=`${done} / ${boxes.length} 完了`;
+ document.getElementById('fill').style.width=(done/boxes.length*100)+'%';
+}
+boxes.forEach(b=>b.onchange=update);
+update();
+</script>
+</body>
+</html>
